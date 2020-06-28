@@ -1,0 +1,236 @@
+/*
+    DEMO STYLE
+*/
+
+/* p {
+    font-size: 20px;
+} */
+
+.closeArrow{
+    background: #ffa6a6;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 26px;
+}
+
+.videoContainer {
+    max-width: 888px;
+    margin-top: 3px;
+}
+
+#dismiss {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center; 
+    position: relative;
+    top: 8px;
+    left: 263px;
+    cursor: pointer;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+}
+
+.userPic {
+    max-width: 64px;
+    margin-top: 10px;
+}
+
+#dropdownMenuLink {
+    padding-right: 38px;
+}
+
+.commentReplies {
+    border-radius: 23px;
+    background: #fff5f5;
+    padding-left: 23px;
+}
+
+a, a:hover, a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.navbar {
+    padding: 10px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #ddd;
+    margin: 40px 0;
+}
+
+/* Custom ScrollBar*/
+
+/* width */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #e22a2a;
+    border-radius: 10px;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+    background: #e8e8e8;
+    border-radius: 10px;
+    border:2px solid #b90b0b
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover { 
+    background: #ffb2a2;
+}
+
+/* Custom ScrollBar Ends Here*/
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+#sidebar {
+    max-height: 874px;
+    overflow-y: scroll;
+    min-width: 325px;
+    max-width: 325px;
+    background: #ffefef;
+    color: black;
+    transition: all 0.3s;
+}
+
+#sidebar.active {
+    margin-left: -325px;
+}
+
+#sidebar .sidebar-header {
+    border-radius: 14px;
+    font-weight: bold;
+    margin: 21px 6px;
+    border: 2px solid black; 
+    padding: 20px;
+    background: #ffc9c9;
+}
+
+.sidebar-header h4{
+    font-weight: bold;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 0.97em;
+    display: block;
+}
+
+#sidebar ul li a.active {
+    border-top: 2px solid;
+    border-bottom: 2px solid; 
+    color: rgb(0, 0, 0); 
+    background: rgb(240, 222, 222);
+}
+
+#sidebar ul li a:hover {
+    color: rgb(85, 8, 8); 
+    background: rgb(240, 222, 222);
+}
+
+#sidebar ul li.active>a, a[aria-expanded="true"] {
+    color: #fff;
+    background: #424244;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #6d7fcc;
+}
+
+a.download {
+    background: #fff;
+    color: #7386D5;
+}
+
+a.article, a.article:hover {
+    background: #6d7fcc !important;
+    color: #fff !important;
+}
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -325px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+    #sidebarCollapse span {
+        display: none;
+    }
+}

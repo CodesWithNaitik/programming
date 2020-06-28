@@ -1,0 +1,905 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  
+<!-- Scrollbar Custom CSS -->
+<link href="prism.css" rel="stylesheet">
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+<link rel="stylesheet" href="sidemenu.css">
+<style>
+    code[class*="language-"],
+    pre[class*="language-"] {
+        max-height: 614px;
+    }
+    .commentContainer{
+        overflow-x: scroll;
+    }
+</style>
+
+
+  <style>
+
+
+    .notification-bell {
+      position: absolute;
+      right: 0px;
+    }
+
+    .dropdown-menu-notify {
+      overflow-y: scroll;
+      overflow-x: hidden;
+      max-height: 400px;
+      top: 60px;
+      right: -1px;
+      left: unset;
+      width: 460px;
+      box-shadow: 0px 5px 7px -1px #c1c1c1;
+      padding-bottom: 0px;
+      padding: 0px;
+    }
+
+    ul ul a {
+      background: transparent;
+
+    }
+
+    .dropdown-menu-notify:before {
+      content: "";
+      position: absolute;
+      top: -20px;
+      right: 12px;
+      border: 10px solid white;
+      border-color: transparent transparent white transparent;
+    }
+
+
+
+    .head-notify {
+      padding: 5px 15px;
+      border-radius: 3px 3px 0px 0px;
+    }
+
+    .footer-notify {
+      padding: 5px 15px;
+      border-radius: 0px 0px 3px 3px;
+    }
+
+    .notification-box-notify {
+      padding: 10px 0px;
+    }
+
+    .bg-gray-notify {
+      background-color: #eee;
+    }
+
+    @media (max-width: 640px) {
+      .dropdown-menu-notify {
+        top: 50px;
+        left: -16px;
+        width: 290px;
+      }
+
+      .nav-notify {
+        display: block;
+      }
+
+      .nav-notify .nav-item-notify,
+      .nav-notify .nav-item-notify a {
+        padding-left: 0px;
+      }
+
+      .message-notify {
+        font-size: 13px;
+      }
+    }
+  </style>
+
+  
+  <style>
+      .brandLogo{
+
+
+    max-width: 42px;
+}
+
+.mainContainer{
+    margin-top: 23px;
+}
+  </style>
+  <link rel="icon" type="image/png" href="https://codewithharry.com/static/common/img/favicon.png">
+
+  <title>Project 3: Creating a News Website | JavaScript Tutorial In Hindi #40 - Code With Harry</title>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-60726752-3"></script>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-60726752-3');
+  </script>
+
+  <!-- Google Ads Auto -->
+  <script async src="f.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-9655830461045889",
+      enable_page_level_ads: true
+    });
+  </script>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="https://codewithharry.com/"><img class="brandLogo" href="https://codeswithharry.com/static/common/img/photo.png"
+        alt="My image"></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://codewithharry.com/">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://codewithharry.com/videos">Videos</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://codewithharry.com/blog">Blog</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://codewithharry.com/contact">Contact Me</a>
+        </li>
+      </ul>
+
+      <form class="form-inline my-2 my-lg-0 mr-3" method="get" action="/search/">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query">
+        <button class="btn btn-danger my-2 my-sm-0" type="submit">Search</button>
+
+      </form>
+      
+      <div>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#loginModal">Login</button>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#signupModal">SignUp</button>
+      </div>
+      
+    </div>
+
+  </nav>
+  
+  <!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModal">Login using your credentials</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form action="/profile/login" method='post'><input type="hidden" name="csrfmiddlewaretoken" value="eAfH7HDGSMFESuUNjMOeO4A54h6eawdnz8SyLMugluaz2PJE4ru5lnAeqR462upk">
+                    <div class="form-group">
+                        <label for="lusername">Username</label>
+                        <input type="name" class="form-control" id="luname" placeholder="Enter your username"
+                            name="uname">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="lpassword" placeholder="Enter your password"
+                            name="password">
+                    </div>
+                    <div class="g-recaptcha" data-sitekey="6LdvcqwUAAAAACmPYNVoiJA7D84xLSQQt5g9p10m"></div>
+                    <input type="hidden" name="path" value="/videos/javascript-tutorials-in-hindi-40">
+
+                    <button type="submit" class="btn btn-danger mt-2" id="loginsubmit">Login</button>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+  <!-- SignUp Modal -->
+<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signupModal">SignUp for an account</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+            <form name="contact" method="post" action="/profile/signup"><input type="hidden" name="csrfmiddlewaretoken" value="eAfH7HDGSMFESuUNjMOeO4A54h6eawdnz8SyLMugluaz2PJE4ru5lnAeqR462upk">
+                
+                <div class="form-group">
+                    <label for="uname">Username</label>
+                    <input type="text" class="form-control" id="uname" placeholder="Enter your Name" name="uname">
+                </div>
+                <div class="form-group">
+                    <label for="name">First Name</label>
+                    <input type="text" class="form-control" id="fname" placeholder="Enter your First Name" name="fname">
+                </div>
+                <div class="form-group">
+                    <label for="name">Last Name</label>
+                    <input type="text" class="form-control" id="lname" placeholder="Enter your Last Name" name="lname">
+                </div>
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter your Email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Choose a password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Choose a password" name="password">
+                </div>
+                <div class="form-group">
+                    <label for="password2">Retype a password</label>
+                    <input type="password" class="form-control" id="password2" placeholder="Retype your password" name="password2">
+                </div>
+                <div class="g-recaptcha" data-sitekey="6LdvcqwUAAAAACmPYNVoiJA7D84xLSQQt5g9p10m"></div>
+                <input type="hidden" name="path" value="/videos/javascript-tutorials-in-hindi-40">
+                <button type="submit" class="btn btn-danger mt-2">SignUp</button>
+            </form>
+        </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+<div class="wrapper">
+    <!-- SideMenu is here  -->
+    <nav id="sidebar">
+        <div id="dismiss">
+            <i class="fas fa-arrow-left closeArrow"></i>
+        </div>
+
+        <div class="sidebar-header">
+            <h4>JavaScript Tutorials In Hindi</h4>
+        </div>
+
+        <ul class="list-unstyled components">
+            
+            
+            <li>
+                <a href="codewithharry.com/videos/javascript-tutorials-in-hindi-5" class='font-weight-bold' >5. JavaScript Type Conversion &amp; Coercion | JavaScript Tutorial In Hindi #5</a>
+            </li>
+            
+            <li>
+                <a href="codewithharry.com/videos/javascript-tutorials-in-hindi-6" class='font-weight-bold' >6. Strings: Properties, Methods &amp; Template Literals in JavaScript | JavaScript Tutorial In Hindi #6</a>
+            </li>
+            
+            <li>
+                <a href="codewithharry.com/videos/javascript-tutorials-in-hindi-7" class='font-weight-bold' >7. Arrays and Objects In JavaScript | JavaScript Tutorial In Hindi #7</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-8" class='font-weight-bold' >8. If Else Conditionals &amp; Switches in JavaScript | JavaScript Tutorial In Hindi #8</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-9" class='font-weight-bold' >9. For, While &amp; Do while Loops in JavaScript | JavaScript Tutorial In Hindi #9</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-10" class='font-weight-bold' >10. Functions in JavaScript | JavaScript Tutorial In Hindi #10</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-11" class='font-weight-bold' >11. Manipulating Websites Using JS Window Object | JavaScript Tutorial In Hindi #11</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-12" class='font-weight-bold' >12. Understanding DOM &amp; Creating a Website Layout | JavaScript Tutorial In Hindi #12</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-13" class='font-weight-bold' >13. WebPage Crawler In JavaScript - Exercise 1 | JavaScript Tutorial In Hindi #13</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-14" class='font-weight-bold' >14. HTML Element Selectors In JavaScript | JavaScript Tutorial In Hindi #14</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-15" class='font-weight-bold' >15. Children, Parent &amp; Traversing the DOM | JavaScript Tutorial In Hindi #15</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-16" class='font-weight-bold' >16. Creating, Removing &amp; Replacing Elements | JavaScript Tutorial In Hindi #16</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-17" class='font-weight-bold' >17. Events &amp; Event Object In JavaScript | JavaScript Tutorial In Hindi #17</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-18" class='font-weight-bold' >18. More on JavaScript Events | JavaScript Tutorial In Hindi #18</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-19" class='font-weight-bold' >19. Smart Page Crawler In JS Exercise1: Solution | JavaScript Tutorial In Hindi #19</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-20" class='font-weight-bold' >20. Local &amp; Session storage in JavaScript | JavaScript Tutorial In Hindi #20</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-21" class='font-weight-bold' >21. Creating Editable Div Using JavaScript: Exercise 2 | JavaScript Tutorial In Hindi #21</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-22" class='font-weight-bold' >22. Project 1: Build a Notes Taking Website Using Pure JavaScript | JavaScript Tutorial In Hindi #22</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-23" class='font-weight-bold' >23. Math Object In JavaScript | JavaScript Tutorial In Hindi #23</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-24" class='font-weight-bold' >24. Date Object: Date &amp; Time In JavaScript | JavaScript Tutorial In Hindi #24</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-25" class='font-weight-bold' >25. Creating an Editable Div Exercise 2: Solution | JavaScript Tutorial In Hindi #25</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-26" class='font-weight-bold' >26. Improving Magic Notes Website Exercise 3 | JavaScript Tutorial In Hindi #26</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-27" class='font-weight-bold' >27. Object Literals, Constructors and Object Oriented JavaScript | JavaScript Tutorial In Hindi #27</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-28" class='font-weight-bold' >28. Object Prototype In javascript | JavaScript Tutorial In Hindi #28</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-29" class='font-weight-bold' >29. Notes App with Title - Exercise 3: Solution | JavaScript Tutorial In Hindi #29</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-30" class='font-weight-bold' >30. Prototype Inheritance In JavaScript | JavaScript Tutorial In Hindi #30</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-31" class='font-weight-bold' >31. ES6 Classes and Inheritance | JavaScript Tutorial In Hindi #31</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-32" class='font-weight-bold' >32. Implementing a library class - Exercise 4 | JavaScript Tutorial In Hindi #32</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-33" class='font-weight-bold' >33. Project 2: Building a College Library Website | JavaScript Tutorial In Hindi #33</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-34" class='font-weight-bold' >34. What is Asynchronous Programming? | JavaScript Tutorial In Hindi #34</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-35" class='font-weight-bold' >35. Ajax tutorial in hindi | JavaScript Tutorial In Hindi #35</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-36" class='font-weight-bold' >36. Library Class Implementation Exercise 4: Solution | JavaScript Tutorial In Hindi #36</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-37" class='font-weight-bold' >37. Callback functions in javascript | JavaScript Tutorial In Hindi #37</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-38" class='font-weight-bold' >38. Using a Dictionary API Exercise 5 | JavaScript Tutorial In Hindi #38</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-39" class='font-weight-bold' >39. Promises Basics, Promise.then() &amp; Promise.catch() | JavaScript Tutorial In Hindi #39</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-40" class='font-weight-bold active'
+                    >40. Project 3: Creating a News Website | JavaScript Tutorial In Hindi #40</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-40" class='font-weight-bold' >41. Arrow functions in Javascript | JavaScript Tutorial In Hindi #41</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-45" class='font-weight-bold' >42. Using JavaScript Objects Exercise 5: Solution | JavaScript Tutorial In Hindi #45</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-46" class='font-weight-bold' >43. JavaScript Regular Expressions - Basic Functions | JavaScript Tutorial In Hindi #46</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-47" class='font-weight-bold' >44. Regular Expressions - Metacharacters in JavaScript | JavaScript Tutorial In Hindi #47</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-48" class='font-weight-bold' >45. Regular Expressions - Character sets | JavaScript Tutorial In Hindi #48</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-49" class='font-weight-bold' >46. Shorthand character classes (Regular Expressions) | JavaScript Tutorial In Hindi #49</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-50" class='font-weight-bold' >47. Project 4: Form Validation using Regular Expressions | JavaScript Tutorial In Hindi #50</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-51" class='font-weight-bold' >48. Iterators in JavaScript | JavaScript Tutorial In Hindi #51</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-52" class='font-weight-bold' >49. Creating an Alarm App: Exercise 6 | JavaScript Tutorial In Hindi #52</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-53" class='font-weight-bold' >50. Generators in Javascript | JavaScript Tutorial In Hindi #53</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-54" class='font-weight-bold' >51. Alarm Clock In JavaScript | JavaScript Tutorial In Hindi #54</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-55" class='font-weight-bold' >52. Project 5: Creating a CV Screener In JavaScript | JavaScript Tutorial In Hindi #55</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-56" class='font-weight-bold' >53. For.. of Loop vs For.. in Loop (When to use which?) | JavaScript Tutorial In Hindi #56</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-59" class='font-weight-bold' >54. JavaScript Symbols | JavaScript Tutorial In Hindi #59</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-63" class='font-weight-bold' >55. Project 6: PostMan Clone - Creating a Get/Post Request Website | JavaScript Tutorial In Hindi #63</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-64" class='font-weight-bold' >56. Drag &amp; Drop Elements with JavaScript and HTML | JavaScript Tutorial In Hindi #64</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-65" class='font-weight-bold' >57. Project 7: Creating a Calculator using HTML, CSS &amp; JS | JavaScript Tutorial In Hindi #65</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-42" class='font-weight-bold' >58. Fetch api in Javascript | JavaScript Tutorial In Hindi #42</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-43" class='font-weight-bold' >59. Async/Await in Javascript | JavaScript Tutorial In Hindi #43</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-44" class='font-weight-bold' >60. Error Handling &amp; Try Catch in Javascript | JavaScript Tutorial In Hindi #44</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-56" class='font-weight-bold' >61. For.. of Loop vs For.. in Loop (When to use which?) | JavaScript Tutorial In Hindi #56</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-57" class='font-weight-bold' >62. JavaScript Maps | JavaScript Tutorial In Hindi #57</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-58" class='font-weight-bold' >63. JavaScript Sets | JavaScript Tutorial In Hindi #58</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-60" class='font-weight-bold' >64. JavaScript Destructuring | JavaScript Tutorial In Hindi #60</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-61" class='font-weight-bold' >65. JavaScript Wall Clock: Exercise 6 | JavaScript Tutorial In Hindi #61</a>
+            </li>
+            
+            <li>
+                <a href="/videos/javascript-tutorials-in-hindi-62" class='font-weight-bold' >66. Creating a Clock: Exercise 6 Solution | JavaScript Tutorial In Hindi #62</a>
+            </li>
+            
+
+        </ul>
+    </nav>
+
+    <!-- Content Toggle Button  -->
+    <div id="content">
+        <button type="button" id="sidebarCollapse" class="btn btn-dark">
+            <i class="fas fa-align-left"></i>
+            <span>Open/close sidebar</span>
+        </button>
+        <div class="my-3">
+
+            <h4> Project 3: Creating a News Website | JavaScript Tutorial In Hindi #40</h4>
+        </div>
+        <div class="container videoContainer embed-responsive embed-responsive-16by9">
+            
+                <iframe class="embed-responsive-item" src="//www.youtube.com/embed/w9bVm7VLqTI"
+                    allowfullscreen></iframe></div>
+            
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- CodeWithHarry Banner -->
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9655830461045889"
+            data-ad-slot="5087230793" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        <!-- CodeWithHarry Banner -->
+        <ul class="my-2 nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                    aria-selected="true">Description</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                    aria-controls="profile" aria-selected="false">Code</a>
+            </li>
+
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <div class='m-3'>
+                    <!-- Page content goes here -->
+                    <p><br></p>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+                <div class='m-3'><h4>Code index.html as described/written in the video</h4>
+<pre class='language-html'><code>&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+  &lt;!-- Required meta tags --&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"&gt;
+
+  &lt;!-- Bootstrap CSS --&gt;
+  &lt;link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"&gt;
+
+  &lt;title&gt;Welcome To Indian Shatabdi News&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;nav class="navbar navbar-expand-lg navbar-dark bg-dark"&gt;
+    &lt;a class="navbar-brand" href="#"&gt;Indian Shatabdi News&lt;/a&gt;
+    &lt;button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"&gt;
+      &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;div class="collapse navbar-collapse" id="navbarSupportedContent"&gt;
+      &lt;ul class="navbar-nav mr-auto"&gt;
+        &lt;li class="nav-item active"&gt;
+          &lt;a class="nav-link" href="#"&gt;Home &lt;span class="sr-only"&gt;(current)&lt;/span&gt;&lt;/a&gt;
+        &lt;/li&gt;
+        
+        
+      &lt;/ul&gt;
+      &lt;form class="form-inline my-2 my-lg-0"&gt;
+        &lt;input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"&gt;
+        &lt;button class="btn btn-outline-success my-2 my-sm-0" type="submit"&gt;Search&lt;/button&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+  &lt;/nav&gt;
+
+  &lt;div class="container my-3"&gt;
+    &lt;h3&gt;Top News &lt;span class="badge badge-secondary"&gt;by Indian shatabdi News&lt;/span&gt;&lt;/h3&gt;
+    &lt;hr&gt;
+    &lt;div class="accordion" id="newsAccordion"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;!-- Optional JavaScript --&gt;
+  &lt;!-- jQuery first, then Popper.js, then Bootstrap JS --&gt;
+  &lt;script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"&gt;&lt;/script&gt;
+  &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"&gt;&lt;/script&gt;
+  &lt;script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"&gt;&lt;/script&gt;
+  &lt;script src="inddel.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+
+<h4>Code index.js as described/written in the video</h4>
+<pre class='language-js'><code>console.log("This is my index js file");
+
+// Initialize the news api parameters
+let source = 'the-times-of-india';
+let apiKey = 'd093053d72bc40248998159804e0e67d'
+
+// Grab the news container
+let newsAccordion = document.getElementById('newsAccordion');
+
+// Create an ajax get request
+const xhr = new XMLHttpRequest();
+xhr.open('GET', `https://newsapi.org/v2/top-headlines?sources=${source}&apiKey=${apiKey}`, true);
+
+// What to do when response is ready
+xhr.onload = function () {
+    if (this.status === 200) {
+        let json = JSON.parse(this.responseText);
+        let articles = json.articles;
+        console.log(articles);
+        let newsHtml = "";
+        articles.forEach(function(element, index) {
+            // console.log(element, index)
+            let news = `&lt;div class="card"&gt;
+                            &lt;div class="card-header" id="heading${index}"&gt;
+                                &lt;h2 class="mb-0"&gt;
+                                &lt;button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse${index}"
+                                    aria-expanded="false" aria-controls="collapse${index}"&gt;
+                                   &lt;b&gt;Breaking News ${index+1}:&lt;/b&gt; ${element["title"]}
+                                &lt;/button&gt;
+                                &lt;/h2&gt;
+                            &lt;/div&gt;
+
+                            &lt;div id="collapse${index}" class="collapse" aria-labelledby="heading${index}" data-parent="#newsAccordion"&gt;
+                                &lt;div class="card-body"&gt; ${element["content"]}. &lt;a href="${element['url']}" target="_blank" &gt;Read more here&lt;/a&gt;  &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;`;
+            newsHtml += news;
+        });
+        newsAccordion.innerHTML = newsHtml;
+    }
+    else {
+        console.log("Some error occured")
+    }
+}
+
+xhr.send()
+
+
+</code></pre></div>
+            </div>
+        </div>
+
+
+
+        <hr>
+        <div class="container-fluid my-3 overflow-hidden">
+            
+            <a class="btn btn-danger float-left" href="https://codewithharry.com/videos/javascript-tutorials-in-hindi-39">&larr; Previous </a>
+            
+
+            
+            <a class="btn btn-danger float-right" href="https://codewithharry.com/videos/javascript-tutorials-in-hindi-40">Next &rarr;</a>
+            
+        </div>
+        <hr>
+
+        <div id="comments" class="container-fluid">
+            
+
+            <div class="my-4">
+                <h2><label for="inputAddress">You must be logged in to post a comment!</label></h2>
+                <button type="submit" class="btn btn-danger my-2 my-sm-0 ml-2" data-toggle="modal"
+                    data-target="#loginModal">Login Here</button>
+                <button type="submit" class="btn btn-danger my-2 my-sm-0 ml-2" data-toggle="modal"
+                    data-target="#signupModal">Signup Here</button>
+            </div>
+
+            
+
+            
+
+        <div class="container-fluid my-4">
+            <h3>Comments(3)</h3>
+
+            
+            
+            <div class="row mt-4">
+                <div class="col-md-3 col-lg-1 col-xl-1">
+                    <img class="userPic rounded-circle" href="codewithharry/static/videoSeries/commentImg.png">
+                </div>
+                <div class="col-md-8 col-lg-10 col-xl-10 commentContainer">
+                    <div class="my-2">
+                        <b>Sobhit</b> at 2019-06-23 09:30:09 says<br>
+                        Harry bhai api fetch nahi ho raha hai 
+Yea error de raha hai:
+Access to XMLHttpRequest at &#39;http://newsapi.org/v2/top-headlines?sources=bbc-news&amp;apiKey=4eaeaa7b20b1437181f5030352f60afc&#39; from origin &#39;http://127.0.0.1:5500&#39; has been blocked by CORS policy: No &#39;Access-Control-Allow-Origin&#39; header is present on the requested resource.
+index.js:47 GET http://newsapi.org/v2/top-headlines?sources=bbc-news&amp;apiKey=4eaeaa7b20b1437181f5030352f60afc net::ERR_FAILED
+
+
+
+
+please help
+                    </div>
+                    
+                    <button class="btn btn-danger btn-sm" type="button" data-toggle="collapse"
+                        data-target="#openReply1117" aria-expanded="false" aria-controls="collapseExample">
+                        Add Reply </button>
+
+                    <!-- replies are here -->
+                    <div class="collapse" id="openReply1117">
+                        <form action="/videos/postcomment" method="post"><input type="hidden" name="csrfmiddlewaretoken" value="eAfH7HDGSMFESuUNjMOeO4A54h6eawdnz8SyLMugluaz2PJE4ru5lnAeqR462upk">
+                            <textarea type="text" class="form-control my-2" placeholder="Write a reply..."
+                                name="comment"></textarea>
+                            <input type="hidden" name="path" value="/videos/javascript-tutorials-in-hindi-40">
+                            <input type="hidden" name="videoSlug" value="javascript-tutorials-in-hindi-40">
+                            <input type="hidden" name="parent" value="1117">
+                            <button class="btn btn-sm btn-danger" type="submit">Reply</button>
+                        </form>
+                    </div>
+                    <div class='commentReplies'>
+                        
+                        <div class="row my-3">
+                            <div class="col-md-3 col-lg-1 col-xl-1">
+                                <img class="userPic rounded-circle" href="codewithharry.com/static/videoSeries/commentImg.png">
+                            </div>
+                            <div class="col-md-8 col-lg-10 col-xl-10">
+                                <div class="my-2">
+                                    <b>Sobhit</b> at 2019-06-23 09:30:09 says<br>
+                                    Ok got it .For anyone facing this issue just install a chrome extension:
+ moesif cors extension 
+Then switch it on from the top right corner of it&#39;s icon
+Then reload the page.
+It would definitely work
+
+
+                                    <div class="my-2">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row my-3">
+                            <div class="col-md-3 col-lg-1 col-xl-1">
+                                <img class="userPic rounded-circle" href="https://codewithharry.com/static/videoSeries/commentImg.png">
+                            </div>
+                            <div class="col-md-8 col-lg-10 col-xl-10">
+                                <div class="my-2">
+                                    <b>Sobhit</b> at 2019-06-23 09:30:09 says<br>
+                                    By the way Harry bhai can you explain why this error occurs?
+Aaap to reply dete hi nehi ho :(
+
+                                    <div class="my-2">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+            </div>
+            
+            
+            
+            
+            
+            
+        </div>
+    </div>
+    <hr>
+</div>
+
+
+</div>
+  <!-- FOOTER -->
+  <footer class="container mt-3">
+    <p class="float-right"><a href="#">Back to top</a></p>
+    <p>&copy; 2019-2020 CodeWithHarry.com &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+  </footer>
+  <!-- Custom JavaScript -->
+  <script src="https://apis.google.com/js/platform.js"></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/433888fe69.js" crossorigin="anonymous"></script>
+<!-- Font Awesome JS -->
+<script src="https://kit.fontawesome.com/433888fe69.js"></script>
+
+<!-- jQuery Custom Scroller CDN -->
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+<script type="text/javascript">
+    // Sidebar toggle
+    $(document).ready(function () {
+        $('#sidebarCollapse').add('#dismiss').on('click', function () {
+            $('#sidebar').toggleClass('active');
+        });
+    });
+</script>
+
+<script>
+
+    function disableScrolling() {
+        let x = window.scrollX;
+        let y = window.scrollY;
+        window.onscroll = function () { window.scrollTo(x, y); };
+    }
+
+    function enableScrolling() {
+        window.onscroll = function () { };
+    }
+
+    // Add copy button
+    let pres = document.getElementsByTagName('pre');
+    Array.from(pres).forEach((element2) => {
+        let element = document.createElement('button');
+        element.setAttribute('class', 'btn btn-primary');
+        element.innerHTML = 'Copy';
+        element.style.float = 'right';
+
+        element.addEventListener('click', (e) => {
+            disableScrolling();
+            console.log(e)
+            let x = window.screenX;
+            let y = window.screenY;
+
+            element.innerHTML = 'copied';
+            let tarea = document.createElement('textarea');
+            tarea.innerHTML = element.parentElement.children[1].innerText;
+            document.body.append(tarea);
+            tarea.focus();
+            tarea.select();
+            document.execCommand('copy');
+            tarea.style.display = 'none';
+            setTimeout(() => {
+                element.innerHTML = 'Copy';
+            }, 2000);
+            setTimeout(() => {
+                enableScrolling();
+            }, 0);
+        })
+        element2.insertBefore(element, element2.children[0]);
+    })
+
+</script>
+
+</body>
+
+</html>

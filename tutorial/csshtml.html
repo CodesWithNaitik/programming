@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* selector
+        # is used for id
+        . for class
+        :hover is used to give a specific design when cursor move around him
+        :active is used to set degsin of text when it is active or clicked before
+        to remove link design run  */
+        #abcd{
+            /* to remove link design run below command */
+            text-decoration: none;
+        }
+        .hg{
+            list-style: none;
+        }
+        /* font style for body*/
+         body{
+             color: rgb(168, 236, 8);
+             background-color: rgb(245, 247, 159);
+             background-image: url("!.jpg");
+             background-repeat: no-repeat;
+             font-weight: 300;
+             font-family: 'Times New Roman', Times, serif;
+             font-style: italic;
+         }
+         /* boder padding margin property */
+         p{
+             border: 2px solid red;
+             border-radius: 40px;
+             border-left: 2px solid rgb(192, 6, 6);
+             /* border-top-right-radius: ; */
+             box-shadow: red;
+             box-sizing: border-box;
+             padding-left: 0%;
+             width:800px;
+             height: 100px;
+             padding: 20px 40px;
+             text-align: center;
+             word-wrap: normal;
+             text-align:center;
+             justify-items: center;
+             margin:auto auto;
+         }
+         #firstPara{
+            background-color: red;
+            height: 100px;
+            width:455px;
+            border: 4px solid green;
+            /* border-width: 4px;
+            border-color: green;
+            border-style: solid;  */
+            border-radius: 11px;
+        }
+
+        #secondPara{
+            background-color: rgb(58, 243, 98);
+            height: 100px;
+            width:455px; 
+            border-top: 2px solid rgb(231, 22, 231);
+            border-right: 2px solid rgb(18, 10, 133);
+            border-bottom: 2px solid rgba(9, 144, 27, 0.774);
+            border-left: 2px solid rgb(156, 42, 13);
+            border-top-left-radius: 4px;
+            border-top-right-radius: 14px;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 24px;
+        }
+
+        #thirdPara{
+            height: 500px;
+            width:455px; 
+            background-image: url('https://codewithharry.com/static/common/img/photo.png');
+            border: 2px solid red;
+            background-repeat: no-repeat; /* repeat-x and repeat-y will make it repeat on x and y axis */
+            /* background-position: 192px 34px; */
+            background-position: center center;
+            /* background-position: bottom right; */
+            /* background-position: top center; */ 
+
+        }
+    
+    </style>
+</head>
+<body>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit exercitationem praesentium deserunt unde dicta at recusandae odio? Ex vitae ea asperiores sequi. Dolorem deleniti saepe qui vero assumenda cum aspernatur tempore reiciendis nostrum aliquam!</p>
+    <h>Lorem ipsum dolor sit amet.</h>
+    <a id="abcd" href="www.goggle.com">Go to google</a>
+    <ol class="hg">
+        <li>
+            hkj
+        </li>
+        <li>
+            hkj
+        </li>
+        <li>
+            hkj
+        </li>
+    </ol>
+    <h3>This is heading</h3>
+    <p id="firstPara">This is a paragraph</p>
+
+    <h3>This is second heading</h3>
+    <p id="secondPara">This is my second paragraph</p>
+
+    <h3>This is third heading</h3>
+    <p id="thirdPara">This is my third paragraph</p>
+</body>
+</html>
